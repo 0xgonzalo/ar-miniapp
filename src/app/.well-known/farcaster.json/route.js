@@ -13,7 +13,7 @@ export async function GET() {
     },
     baseBuilder: {
       // Replace with your Base account address after verification
-      ownerAddress: '0x0000000000000000000000000000000000000000',
+      ownerAddress: '0x6B0425666196885aeA6F2630F5B8750Be2C81ea1',
     },
     accountAssociation: {
       // These will be generated after verification
