@@ -8,12 +8,12 @@
     const URL = process.env.NEXT_PUBLIC_APP_URL as string;
 
     const manifest = {
-      accountAssociation: withValidProperties({
+      accountAssociation: {
         header: "",
         payload: "",
         signature: "",
-      }),
-      miniapp: withValidProperties({
+      },
+      miniapp: {
         name: 'AR Mini App',
         version: '1',
         homeUrl: URL,
@@ -24,20 +24,19 @@
         description: 'Experience Augmented Reality art on Base',
         tags: ['art', 'augmented reality', 'base'],
         primaryCategory: 'art',
-        heroImageUrl: `${URL}/hero.png`,
+        heroImageUrl: `${URL}/icon.png`,
         tagline: "Experience Augmented Reality art on Base",
         ogTitle: "AR Mini App",
         ogDescription: "Experience Augmented Reality art on Base",
-        ogImageUrl: `${URL}/og.png`,
+        ogImageUrl: `${URL}/icon.png`,
         screenshotUrls: [
-          `${URL}/screenshot1.png`,
-          `${URL}/screenshot2.png`,
-          `${URL}/screenshot3.png`,
+          `${URL}/icon.png`,
+          `${URL}/splash.png`,
         ],
-      }),
+      },
       baseBuilder: {
-        ownerAddress: process.env.BASE_OWNER_ADDRESS || '0x6B0425666196885aeA6F2630F5B8750Be2C81ea1',
-      }
+        ownerAddress: '0x6B0425666196885aeA6F2630F5B8750Be2C81ea1',
+      },
     };
 
     return Response.json(manifest);
