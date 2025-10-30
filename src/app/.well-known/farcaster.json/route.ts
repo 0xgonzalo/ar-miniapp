@@ -5,7 +5,7 @@
   }
 
   export async function GET() {
-    const URL = process.env.NEXT_PUBLIC_APP_URL || 'https://your-domain.com';
+    const URL = process.env.NEXT_PUBLIC_APP_URL as string;
 
     const manifest = {
       accountAssociation: withValidProperties({
@@ -20,9 +20,20 @@
         iconUrl: `${URL}/icon.png`,
         splashImageUrl: `${URL}/splash.png`,
         splashBackgroundColor: '#000000',
+        subtitle: "Experience Augmented Reality art on Base",
         description: 'Experience Augmented Reality art on Base',
         tags: ['art', 'augmented reality', 'base'],
         primaryCategory: 'art',
+        heroImageUrl: `${URL}/hero.png`,
+        tagline: "Experience Augmented Reality art on Base",
+        ogTitle: "AR Mini App",
+        ogDescription: "Experience Augmented Reality art on Base",
+        ogImageUrl: `${URL}/og.png`,
+        screenshotUrls: [
+          `${URL}/screenshot1.png`,
+          `${URL}/screenshot2.png`,
+          `${URL}/screenshot3.png`,
+        ],
       }),
       baseBuilder: {
         ownerAddress: process.env.BASE_OWNER_ADDRESS || '0x6B0425666196885aeA6F2630F5B8750Be2C81ea1',
