@@ -27,11 +27,17 @@ Learn about the Base mini app integration:
    - Environment variables
    - Troubleshooting
 
+4. **[TypeScript Migration](./TYPESCRIPT_MIGRATION.md)** 📘
+   - Complete migration summary
+   - Type definitions reference
+   - Usage guidelines
+   - Best practices
+
 ## Deployment
 
 Ready to launch? Follow these guides:
 
-4. **[Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)** ✅
+5. **[Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)** ✅
    - Pre-deployment tasks
    - Asset requirements
    - Testing procedures

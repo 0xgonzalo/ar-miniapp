@@ -70,7 +70,7 @@ ACCOUNT_ASSOCIATION_SIGNATURE=your_signature_here
 
 ### 2. Update Manifest
 
-Edit `src/app/.well-known/farcaster.json/route.js`:
+Edit `src/app/.well-known/farcaster.json/route.ts`:
 
 ```javascript
 const manifest = {

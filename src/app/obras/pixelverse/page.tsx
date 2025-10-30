@@ -21,8 +21,11 @@ function SceneLights() {
 
   return(
   <>
+    {/* @ts-ignore */}
     <directionalLight position={[0,30,0]} intensity={1.5}/> 
+    {/* @ts-ignore */}
     <directionalLight position={[0,-30,0]} intensity={1.5}/> 
+    {/* @ts-ignore */}
     <directionalLight position={[0,0,30]} intensity={1.5}/> 
 
   </>

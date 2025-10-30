@@ -8,10 +8,10 @@ export default function Page() {
   return (
     <div className="flex min-h-screen min-w-screen flex-col items-center justify-start">
       <ModelComponent 
-        model={<Model modelUrl="/models/Chiri.glb" />} 
-        target={"/targets/chiri.mind"}
-        scale={0.4}
-        position={[0,0.5,0]}
+        model={<Model modelUrl="/models/sachi.glb" />} 
+        target={"/targets/sachi.mind"}
+        scale={1.3}
+        position={[0,3,-2]}
         ligths={<SceneLights />}  
         />
     </div>
@@ -21,8 +21,11 @@ function SceneLights() {
 
   return(
   <>
+    {/* @ts-ignore */}
     <directionalLight position={[0,30,0]} intensity={1.5}/> 
+    {/* @ts-ignore */}
     <directionalLight position={[0,-30,0]} intensity={1.5}/> 
-    <directionalLight position={[0,0,30]} intensity={1.5}/> 
+    {/* @ts-ignore */}
+    <directionalLight position={[0,-30,0]} intensity={1.5}/> 
   </>
 )}

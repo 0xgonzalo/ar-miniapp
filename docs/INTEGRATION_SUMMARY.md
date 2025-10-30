@@ -24,7 +24,7 @@ This document summarizes the Base mini app features that have been added to your
 
 ### 3. Configuration Files
 
-**New file: `src/app/.well-known/farcaster.json/route.js`**
+**New file: `src/app/.well-known/farcaster.json/route.ts`**
 - API route that serves Base manifest
 - Configurable via environment variables
 - Includes app metadata and account association

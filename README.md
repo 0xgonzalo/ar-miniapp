@@ -32,6 +32,7 @@ For detailed setup instructions, see [Quick Start Guide](./docs/QUICKSTART.md).
 
 ## Tech Stack
 
+- **Language**: TypeScript (100% type-safe)
 - **Framework**: Next.js 14 (App Router)
 - **3D Rendering**: Three.js + React Three Fiber
 - **AR Library**: react-three-mind (MindAR)

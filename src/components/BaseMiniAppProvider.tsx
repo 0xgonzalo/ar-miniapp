@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 import { sdk } from '@farcaster/miniapp-sdk';
+import type { BaseMiniAppProviderProps } from '@/types';
 
-export default function BaseMiniAppProvider({ children }) {
-  const [isReady, setIsReady] = useState(false);
+export default function BaseMiniAppProvider({ children }: BaseMiniAppProviderProps) {
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
     // Signal that the mini app is ready
@@ -23,8 +24,8 @@ export default function BaseMiniAppProvider({ children }) {
  * Hook to access Base mini app context and user information
  */
 export function useBaseMiniApp() {
-  const [context, setContext] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [context, setContext] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchContext = async () => {

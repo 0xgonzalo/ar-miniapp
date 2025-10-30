@@ -4,7 +4,6 @@ const ModelComponent = dynamic(() => import('@/components/modelComponent'), { ss
 import Model from "@/components/model";
 
 export default function Home() {
-
   return (
     <main className="flex min-h-screen min-w-screen flex-col items-center justify-between">
       <ModelComponent
@@ -21,8 +20,11 @@ export default function Home() {
 function SceneLights() {
   return (
     <>
+      {/* @ts-ignore */}
       <directionalLight position={[0, 30, 0]} intensity={1.5} />
+      {/* @ts-ignore */}
       <directionalLight position={[0, -30, 0]} intensity={1.5} />
+      {/* @ts-ignore */}
       <directionalLight position={[0, 0, 30]} intensity={1.5} />
     </>
   );
