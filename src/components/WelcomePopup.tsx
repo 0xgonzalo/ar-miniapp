@@ -6,17 +6,12 @@ export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the welcome popup before
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-
-    if (!hasSeenWelcome) {
-      setIsOpen(true);
-    }
+    // Always show the welcome popup on page load
+    setIsOpen(true);
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem('hasSeenWelcome', 'true');
   };
 
   if (!isOpen) return null;

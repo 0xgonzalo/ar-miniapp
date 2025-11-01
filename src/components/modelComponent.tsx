@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import type { ModelComponentProps } from '@/types';
 
 const ARView = dynamic(() => import('react-three-mind').then((mod) => mod.ARView), { ssr: false });
@@ -18,9 +18,32 @@ export default function ModelComponent({
   position = [0, 0, 0],
   ligths
 }: ModelComponentProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Cleanup function to prevent WebGL context loss
+    return () => {
+      // Clean up WebGL context and canvas properly
+      if (containerRef.current) {
+        const canvases = containerRef.current.querySelectorAll('canvas');
+        canvases.forEach(canvas => {
+          // First, try to get and lose the WebGL context
+          const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
+          if (gl) {
+            const loseContextExt = gl.getExtension('WEBGL_lose_context');
+            if (loseContextExt) {
+              loseContextExt.loseContext();
+            }
+          }
+          // Remove the canvas from DOM
+          canvas.remove();
+        });
+      }
+    };
+  }, []);
 
   return (
-    <div className="w-full h-full">
+    <div ref={containerRef} className="w-full h-full">
       <Suspense fallback={
         <div className="h-[50vh] flex justify-center items-center">
           <div className="w-12">

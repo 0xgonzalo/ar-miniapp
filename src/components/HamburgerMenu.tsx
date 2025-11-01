@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 interface Artwork {
@@ -23,9 +23,27 @@ const artworks: Artwork[] = [
 
 export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleNavigation = (path: string) => {
+    setIsOpen(false);
+    // For obra pages, use full page reload to avoid WebGL context issues
+    // For home page, use router navigation
+    if (path.startsWith('/obras/')) {
+      // Full page reload for obra pages to ensure clean WebGL context
+      setTimeout(() => {
+        window.location.href = path;
+      }, 150);
+    } else {
+      // Normal navigation for other pages
+      setTimeout(() => {
+        router.push(path);
+      }, 100);
+    }
   };
 
   return (
@@ -74,17 +92,17 @@ export default function HamburgerMenu() {
 
           <div className="grid grid-cols-2 gap-4">
             {artworks.map((artwork) => (
-              <Link
+              <button
                 key={artwork.name}
-                href={artwork.path}
-                onClick={toggleMenu}
-                className="group block"
+                onClick={() => handleNavigation(artwork.path)}
+                className="group block text-left"
               >
                 <div className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                   <Image
                     src={artwork.image}
                     alt={artwork.name}
                     fill
+                    sizes="(max-width: 768px) 50vw, 150px"
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -95,19 +113,18 @@ export default function HamburgerMenu() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </button>
             ))}
           </div>
 
           {/* Home Link */}
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <Link
-              href="/"
-              onClick={toggleMenu}
+            <button
+              onClick={() => handleNavigation('/')}
               className="block w-full py-3 px-4 text-center bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-300"
             >
               Home
-            </Link>
+            </button>
           </div>
         </div>
       </div>
