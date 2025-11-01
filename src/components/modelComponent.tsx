@@ -52,6 +52,7 @@ export default function ModelComponent({
         </div>
       }>
         <ARView
+          autoplay={true}
           imageTargets={target}
           filterMinCF={0.0001}
           filterBeta={1}
