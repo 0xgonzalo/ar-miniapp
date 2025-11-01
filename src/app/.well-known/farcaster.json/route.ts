@@ -23,7 +23,7 @@
         subtitle: "Experience Augmented Reality art on Base",
         description: 'Experience Augmented Reality art on Base',
         tags: ['art', 'augmented reality', 'base'],
-        primaryCategory: 'art',
+        primaryCategory: 'art-creativity',
         heroImageUrl: `${URL}/icon.png`,
         tagline: "Experience Augmented Reality art on Base",
         ogTitle: "AR Mini App",
