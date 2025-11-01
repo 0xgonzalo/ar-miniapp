@@ -9,9 +9,9 @@
 
     const manifest = {
       accountAssociation: {
-        header: "",
-        payload: "",
-        signature: "",
+        header: "eyJmaWQiOjM1NTU4OCwidHlwZSI6ImF1dGgiLCJrZXkiOiIweEI2QTUwRGI1MkY3MDNkYkIwMDlGMDNGNkViN2Y1NThmMTEwQzliMEQifQ",
+        payload: "eyJkb21haW4iOiJhci1iYXNlLnZlcmNlbC5hcHAifQ",
+        signature: "I7NSeLIuQLP5qyzKNPXANdmFlCpPvvFNRu8iGBoTm8cb61CxdUhTLYTEAc6pC/Uz7oSXwZPQjw6g4VBiBmrSqhs="
       },
       miniapp: {
         name: 'AR Mini App',
