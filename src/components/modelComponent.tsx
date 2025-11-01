@@ -79,7 +79,7 @@ export default function ModelComponent({
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full relative">
+    <div ref={containerRef} className="w-full h-full min-h-screen relative">
       <Suspense fallback={
         <div className="h-[50vh] flex justify-center items-center">
           <div className="w-12">
@@ -106,40 +106,42 @@ export default function ModelComponent({
       </Suspense>
 
       {/* Camera Controls */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-10">
-        {/* Switch Camera Button */}
-        <button
-          onClick={handleSwitchCamera}
-          className="bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-3 shadow-lg transition-all duration-200 active:scale-95"
-          aria-label="Switch camera"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+      <div className="fixed bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-[9999] pointer-events-none">
+        <div className="flex justify-center items-center gap-4 pointer-events-auto">
+          {/* Switch Camera Button */}
+          <button
+            onClick={handleSwitchCamera}
+            className="bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-3 shadow-2xl transition-all duration-200 active:scale-95 border-2 border-gray-200"
+            aria-label="Switch camera"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-            />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-700"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
+          </button>
 
-        {/* Take Photo Button */}
-        <button
-          onClick={handleTakePhoto}
-          className="bg-white hover:bg-gray-100 rounded-full p-4 shadow-lg transition-all duration-200 active:scale-95 border-4 border-gray-300"
-          aria-label="Take photo"
-        >
-          <div className="w-8 h-8 bg-transparent rounded-full border-2 border-gray-400"></div>
-        </button>
+          {/* Take Photo Button */}
+          <button
+            onClick={handleTakePhoto}
+            className="bg-white hover:bg-gray-100 rounded-full p-4 shadow-2xl transition-all duration-200 active:scale-95 border-4 border-gray-300"
+            aria-label="Take photo"
+          >
+            <div className="w-8 h-8 bg-transparent rounded-full border-2 border-gray-600"></div>
+          </button>
 
-        {/* Placeholder for symmetry (optional) */}
-        <div className="w-12 h-12"></div>
+          {/* Placeholder for symmetry */}
+          <div className="w-12 h-12"></div>
+        </div>
       </div>
     </div>
   );
