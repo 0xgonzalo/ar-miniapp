@@ -20,6 +20,7 @@ export default function ModelComponent({
 }: ModelComponentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>('environment');
+  const [cameraKey, setCameraKey] = useState(0);
 
   const handleTakePhoto = () => {
     // Find the video element from the AR view
@@ -54,7 +55,24 @@ export default function ModelComponent({
 
   const handleSwitchCamera = () => {
     setFacingMode((prev) => (prev === 'environment' ? 'user' : 'environment'));
+    // Force remount of ARView component to reinitialize camera
+    setCameraKey((prev) => prev + 1);
   };
+
+  // Workaround for Base App camera initialization issue
+  // If camera doesn't show after initial permission, trigger a refresh
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const videoElement = containerRef.current?.querySelector('video');
+      if (videoElement && videoElement.readyState === 0) {
+        // Video element exists but hasn't loaded - trigger remount
+        console.log('Camera not initialized, triggering refresh...');
+        setCameraKey((prev) => prev + 1);
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [cameraKey]);
 
   useEffect(() => {
     // Cleanup function to prevent WebGL context loss
@@ -88,6 +106,7 @@ export default function ModelComponent({
         </div>
       }>
         <ARView
+          key={cameraKey}
           autoplay={true}
           imageTargets={target}
           filterMinCF={0.0001}
